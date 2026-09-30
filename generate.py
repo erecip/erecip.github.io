@@ -123,6 +123,7 @@ def generate_article_html(slug, target_url, meta, github_domain):
     # Build meta tags
     meta_tags = f'''    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>{html.escape(title)}</title>
     <meta name="description" content="{html.escape(description)}" />
     <meta name="robots" content="max-image-preview:large" />
