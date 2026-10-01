@@ -20,6 +20,7 @@ import time
 import html
 import argparse
 import subprocess
+from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ============================================================
@@ -53,6 +54,23 @@ def fetch_page(url, retries=2):
                 return None
     print(f"  ✗ Failed to fetch {url} after {retries + 1} attempts")
     return None
+
+
+def download_image(url, save_path, retries=2):
+    """Download an image file using curl."""
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    for attempt in range(retries + 1):
+        try:
+            result = subprocess.run(
+                ["curl", "-s", "-L", "--max-time", "30", "-o", save_path, url],
+                capture_output=True, timeout=35
+            )
+            if result.returncode == 0 and os.path.exists(save_path) and os.path.getsize(save_path) > 100:
+                return True
+        except Exception:
+            if attempt < retries:
+                time.sleep(1)
+    return False
 
 
 def extract_meta(html_content):
@@ -104,11 +122,46 @@ def encode_url_chars(url):
     return "[" + ",".join(str(ord(c)) for c in url) + "]"
 
 
-def generate_article_html(slug, target_url, meta, github_domain):
+def replace_domain_in_schema(schema, old_domain, new_base_url, image_map):
+    """Recursively replace the old domain in all schema URLs and image paths."""
+    if isinstance(schema, dict):
+        new_dict = {}
+        for key, value in schema.items():
+            new_dict[key] = replace_domain_in_schema(value, old_domain, new_base_url, image_map)
+        return new_dict
+    elif isinstance(schema, list):
+        return [replace_domain_in_schema(item, old_domain, new_base_url, image_map) for item in schema]
+    elif isinstance(schema, str):
+        # Check if this URL matches a downloaded image
+        for original_url, local_url in image_map.items():
+            if value_matches_url(schema, original_url):
+                return local_url
+        # Replace domain in @id, url, item, and other URL fields
+        if old_domain in schema:
+            return schema.replace(f"https://{old_domain}", new_base_url).replace(f"http://{old_domain}", new_base_url)
+        return schema
+    else:
+        return schema
+
+
+def value_matches_url(value, url):
+    """Check if a string value is the given URL (exact or with size suffix)."""
+    if not isinstance(value, str) or not isinstance(url, str):
+        return False
+    # Exact match
+    if value == url:
+        return True
+    # Match resized versions (e.g., image-500x500.png matches image.png)
+    base, ext = os.path.splitext(url)
+    if value.startswith(base) and value.endswith(ext):
+        return True
+    return False
+
+
+def generate_article_html(slug, target_url, meta, github_domain, local_image_path=None):
     """Generate the HTML content for an article page."""
     title = meta.get("title", "Easy Recipes")
     description = meta.get("description", "")
-    og_image = meta.get("og:image", "")
     og_image_width = meta.get("og:image:width", "")
     og_image_height = meta.get("og:image:height", "")
     og_type = meta.get("og:type", "article")
@@ -119,6 +172,21 @@ def generate_article_html(slug, target_url, meta, github_domain):
 
     canonical_url = f"https://{github_domain}{slug}"
     encoded_target = encode_url_chars(target_url)
+
+    # Use local image URL if available
+    og_image = ""
+    if local_image_path:
+        og_image = f"https://{github_domain}/{local_image_path}"
+
+    # Extract the target domain to replace in schemas
+    parsed_target = urlparse(target_url)
+    target_domain = parsed_target.netloc  # e.g. "schnellrezept.com"
+
+    # Build image map for schema replacement
+    image_map = {}
+    original_og_image = meta.get("og:image", "")
+    if original_og_image and og_image:
+        image_map[original_og_image] = og_image
 
     # Build meta tags
     meta_tags = f'''    <meta charset="UTF-8">
@@ -164,12 +232,16 @@ def generate_article_html(slug, target_url, meta, github_domain):
         meta_tags += f'''
     <meta name="twitter:image" content="{html.escape(og_image)}" />'''
 
-    # JSON-LD schemas
+    # JSON-LD schemas — replace target domain with GitHub domain
     schema_tags = ""
     schemas = meta.get("_schemas", [])
+    new_base_url = f"https://{github_domain}"
     for schema in schemas:
-        # Update URL references to point to our GitHub Pages URL
-        schema_str = json.dumps(schema, ensure_ascii=False)
+        cleaned_schema = replace_domain_in_schema(schema, target_domain, new_base_url, image_map)
+        schema_str = json.dumps(cleaned_schema, ensure_ascii=False)
+        # Remove any remaining target domain name fragments from filenames (e.g. "schnellrezeptlogo" → "logo")
+        domain_name = target_domain.replace(".com", "").replace(".net", "").replace(".org", "").replace(".de", "")
+        schema_str = schema_str.replace(domain_name, "")
         schema_tags += f'''
     <script type="application/ld+json">{schema_str}</script>'''
 
@@ -229,7 +301,7 @@ def generate_article_html(slug, target_url, meta, github_domain):
 
 
 def process_article(slug, target_url, output_dir, github_domain, force=False):
-    """Process a single article: fetch metadata and generate HTML."""
+    """Process a single article: fetch metadata, download image, and generate HTML."""
     # Determine output path
     clean_slug = slug.strip("/")
     out_path = os.path.join(output_dir, clean_slug, "index.html")
@@ -248,8 +320,21 @@ def process_article(slug, target_url, output_dir, github_domain, force=False):
     if not meta.get("title"):
         return ("failed", slug)
 
+    # Download the main image locally
+    local_image_path = None
+    og_image = meta.get("og:image", "")
+    if og_image:
+        # Get image filename from URL
+        parsed_img = urlparse(og_image)
+        img_filename = os.path.basename(parsed_img.path)
+        if img_filename:
+            # Save to article directory: en/slug/image.png
+            local_save = os.path.join(output_dir, clean_slug, img_filename)
+            if download_image(og_image, local_save):
+                local_image_path = f"{clean_slug}/{img_filename}"
+
     # Generate HTML
-    page_html = generate_article_html(slug, target_url, meta, github_domain)
+    page_html = generate_article_html(slug, target_url, meta, github_domain, local_image_path)
 
     # Write file
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
@@ -285,6 +370,7 @@ def main():
     print(f"   Articles: {total}")
     print(f"   Mode: {'FORCE (regenerate all)' if args.force else 'Incremental (new only)'}")
     print(f"   Workers: {args.workers}")
+    print(f"   📷 Images: downloading locally (no external references)")
     print(f"{'='*50}\n")
 
     ok_count = 0
