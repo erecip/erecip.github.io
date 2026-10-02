@@ -274,7 +274,6 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
 <head>
 {meta_tags}
 {schema_tags}
-{redirect_script}
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -307,6 +306,7 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     {img_tag}
     <p>{html.escape(description)}</p>
     <p class="loading">Loading full recipe...</p>
+{redirect_script}
 </body>
 </html>'''
 
