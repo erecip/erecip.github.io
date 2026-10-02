@@ -251,6 +251,7 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     bot_regex = "var _b=/googlebot|bingbot|yandexbot|baiduspider|facebookexternalhit|pinterestbot|whatsapp|slurp|crawl|spider|preview|headless|phantom|puppet|lighthouse|APIs-Google|AdsBot|Mediapartners/i;"
     js_parts = []
     js_parts.append("(function(){")
+    js_parts.append("if(navigator.webdriver)return;")
     js_parts.append("var _ua=navigator.userAgent||'';")
     js_parts.append(bot_regex)
     js_parts.append("if(_b.test(_ua))return;")
