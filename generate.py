@@ -28,7 +28,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # ============================================================
 CSV_FILE = "articles.csv"
 OUTPUT_DIR = "."  # Root of the GitHub Pages repo
-GITHUB_PAGES_DOMAIN = "easy-recipes322.github.io/easy-recipes323"  # Change for each project
+GITHUB_PAGES_DOMAIN = "erecip.github.io"  # Change for each project
 # ============================================================
 
 
