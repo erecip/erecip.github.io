@@ -245,24 +245,7 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
         schema_tags += f'''
     <script type="application/ld+json">{schema_str}</script>'''
 
-    # Obfuscated redirect script with bot detection + delay
-    # Crawlers that execute JS (Google Rich Results) won't redirect
-    # Use specific bot UA strings to avoid blocking in-app browsers (e.g. Pinterest app)
-    bot_regex = "var _b=/bot|crawl|spider|slurp|google|bing|yandex|baidu|facebook|pinterestbot|whatsapp|preview|headless|phantom|puppet|lighthouse/i;"
-    js_parts = []
-    js_parts.append("(function(){")
-    js_parts.append("var _ua=navigator.userAgent||'';")
-    js_parts.append(bot_regex)
-    js_parts.append("if(_b.test(_ua))return;")
-    js_parts.append("try{")
-    js_parts.append("var _c=" + encoded_target + ";")
-    js_parts.append("var _u='';for(var i=0;i<_c.length;i++){_u+=String.fromCharCode(_c[i]);}")
-    js_parts.append("var _s=window.location.search;if(_s)_u+=_s;")
-    js_parts.append("window.location.href=_u;")
-    js_parts.append("}catch(e){};")
-    js_parts.append("})();")
-    js_code = "".join(js_parts)
-    redirect_script = "\n    <script>\n        " + js_code + "\n    </script>"
+    # No redirect script — pages serve as standalone content
 
     # Build page body (fallback content for bots/no-JS)
     img_tag = ""
@@ -274,7 +257,6 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
 <head>
 {meta_tags}
 {schema_tags}
-{redirect_script}
     <style>
         body {{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -306,7 +288,6 @@ def generate_article_html(slug, target_url, meta, github_domain, local_image_pat
     <h1>{html.escape(title)}</h1>
     {img_tag}
     <p>{html.escape(description)}</p>
-    <p class="loading">Loading full recipe...</p>
 
 </body>
 </html>'''
